@@ -52,7 +52,7 @@ document.querySelector('#task1').onclick = function(){
     console.log(filterAge)
 } 
 
-// tast 2
+// task 2
 
 document.querySelector('#task2').onclick = function(){
     const AllNameAndStreet = arr.map(object =>({
@@ -65,10 +65,7 @@ document.querySelector('#task2').onclick = function(){
 //task 3
 
 document.querySelector('#task3').onclick = function (){
-    const usersHaveCar = arr.filter(el => {
-       return el.car ==='BMW', 
-       el.haveBusiness === false
-    })
+    const usersHaveCar = arr.filter(el => el.car ==='BMW' && el.haveBusiness === false)
     console.log(usersHaveCar);
 }
 
@@ -91,52 +88,61 @@ document.querySelector('#task5').onclick = function(){
 //task 6
 
 document.querySelector('#task6').onclick = function(){
-    console.log('Не зрозумів того завданняб, тому тримай')
-    for(let item of arr){
-        console.log(item.name)
-    }
+    let num = 1;
+    const users = arr.forEach(user =>  console.log(num++ +' User is name '+ user.name))
+    console.log(users)
 }
 
 //task 7
 
 document.querySelector('#task7').onclick = function(){
-    const sortForAge = arr.sort((a, b) => {
-        return b.age-a.age;
-    })
-    console.log(sortForAge[0]);
+    const sortForAge = arr.reduce((acm, el) => acm += el, '');
+    console.log(sortForAge)
 }
 
 //task 8 
 
 document.querySelector('#task8').onclick = function(){
-    const countCar = arr.map(object =>({
-        car: object.car,
-    })).filter(user => user.car === 'BMW')
-        
-    console.log(countCar.length)
+    const countCar = arr.reduce((acm, user) => acm += user.car === 'BMW', 0)
+    console.log('Users have BMW '+ countCar)
 }
 
 //task 9
 
 document.querySelector('#task9').onclick = function(){
-    const countCar = arr.map(object =>({
-        car: object.car,
-    })).filter(user => user.car === 'BMW')
-
-    console.log({BMW: countCar.length})
+    const countCar = arr.reduce((acm, user) =>acm += user.car === 'BMW', 0)
+    console.log({BMW: countCar})
 }
 
 //task 10 
 
 document.querySelector('#task10').onclick = function(){
-    const result =
     const arrOfNumbers = [4, 2, 4, 7, 8, 4, 6, 2, 1, 3, 4, 7, 4, 5, 9, 3, 5, 1];
-    const countArrayIndex = arrOfNumbers.length;
-    let sortArray = arrOfNumbers.sort((a, b)=> a - b);
-    console.log(sortArray);
-    for(let item=0;item<countArrayIndex;item++){
-        const number = sortArray.filter( number => number === item);
-        sortArray.splice(0, number.length);
-          
+    const array =[];
+    for(let i=1;i<10;i++){
+        const resultFilter = arrOfNumbers.filter(num => num===i);
+        array.push({i: resultFilter.length})
     }
+    console.log(array);
+}
+
+//task 11
+
+document.querySelector('#task11').onclick = function(){
+    const arrOfImages = ['Mercedes_Photo', 'Audi_Photo', 'BMW_Photo', 'Ferrari_Photo', 'Porche_Photo'];
+    console.log(arrOfImages);
+    setInterval(() => {
+        let firstEl = arrOfImages.shift();
+        arrOfImages.push(firstEl);
+        console.log(arrOfImages);  
+    }, 5000);
+}
+
+//task 12
+
+document.querySelector('#task12').onclick = function(){
+    console.log('Не дуже зрозумів завдання')
+    const date = new Date
+    let time = date.toJSON().split('T')[1].split('.')[0];
+    console.log('Time now is '+ time)
 }
